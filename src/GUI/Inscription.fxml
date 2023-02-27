@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="15.0" layoutY="218.0" prefHeight="282.0" prefWidth="249.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="103.0" text="Email: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Mot de passe: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Nom: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Prenom: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Photo: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Numero de telephone: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Ville: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="158.0" prefWidth="1254.0" style="-fx-background-color: #233244; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="29.0" layoutY="34.0" prefHeight="90.0" prefWidth="438.0" text="Créer un compte" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox layoutX="264.0" layoutY="218.0" prefHeight="282.0" prefWidth="355.0">
+         <children>
+            <TextField fx:id="TF_email" prefHeight="35.0" prefWidth="661.0" />
+            <PasswordField fx:id="TF_mdp" prefHeight="35.0" />
+            <TextField fx:id="TF_nom" prefHeight="35.0" />
+            <TextField fx:id="TF_prenom" prefHeight="35.0" />
+            <Button fx:id="btn_upload" mnemonicParsing="false" onAction="#click_upload" prefHeight="35.0" prefWidth="372.0" text="Choisir un fichier..." />
+            <TextField fx:id="TF_num" minHeight="35.0" />
+            <ComboBox fx:id="villes_box" prefHeight="35.0" prefWidth="358.0" />
+         </children>
+      </VBox>
+      <Button fx:id="Button_inscrire" layoutX="52.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#click_ajout" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #233244; -fx-border-radius: 20; -fx-background-radius: 20;" text="S'inscrire" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="Button_retour" layoutX="-29.0" layoutY="664.0" mnemonicParsing="false" onMouseClicked="#ON_retour_clicked" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: transparent;" text="Retour">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

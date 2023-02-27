@@ -1,0 +1,5 @@
+version '8.15'
+
+dependencies {
+    implementation project(':fontawesomefx-commons')
+}

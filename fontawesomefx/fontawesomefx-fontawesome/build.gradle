@@ -1,0 +1,15 @@
+apply plugin: 'application'
+
+mainClassName = "$moduleName/de.jensd.fx.glyphs.fontawesome.demo.FontAwesomeIconsDemoApp"
+
+version '4.7.0-5'
+
+dependencies {
+    implementation project(':fontawesomefx-commons')
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': mainClassName)
+    }
+}

@@ -1,0 +1,133 @@
+
+plugins {
+    id "java"
+    id "maven-publish"
+    id 'com.jfrog.bintray' version '1.6'
+    id "org.javamodularity.moduleplugin" version "1.3.0"
+    id 'org.openjfx.javafxplugin' version "0.0.5"
+}
+
+subprojects {
+
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
+    apply plugin: "java"
+    apply plugin: "org.javamodularity.moduleplugin"
+    apply plugin: 'org.openjfx.javafxplugin'
+
+
+    group = 'de.jensd'
+    sourceCompatibility = JavaVersion.VERSION_11
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    bintray {
+        user = System.getenv('BINTRAY_USER')
+        key = System.getenv('BINTRAY_KEY')
+        pkg {
+            repo = 'maven'
+            name = 'FontAwesomeFX'
+            userOrg = 'jerady'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'https://Jerady@bitbucket.org/Jerady/fontawesomefx.git'
+            publications = ['mavenJava']
+            websiteUrl = 'https://bitbucket.org/Jerady/fontawesomefx/overview'
+            issueTrackerUrl = 'https://bitbucket.org/Jerady/fontawesomefx/issues'
+            publicDownloadNumbers = true
+            version {
+                name = '8.15'
+                desc = 'FontAwesomeFX 8.15'
+                vcsTag = 'fontawesomefx-8.15'
+            }
+        }
+    }
+    
+    //    install {
+    //        repositories.mavenInstaller {
+    //            pom {
+    //                project {
+    //                    packaging 'jar'
+    //                    name 'FontAwesomeFX'
+    //                    description 'Use WebFonts as icon source for JavaFX applications.'
+    //                    url 'http://www.jensd.de'
+    //                    licenses {
+    //                        license {
+    //                            name 'The Apache Software License, Version 2.0'
+    //                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    //                        }
+    //                    }
+    //                    developers {
+    //                        developer {
+    //                            id 'jens.deters'
+    //                            name 'Jens Deters'
+    //                            email 'mail@jensd.de'
+    //                            url 'http://www.jensd.de'
+    //                        }
+    //                    }
+    //                    scm {
+    //                        connection 'scm:git:https://Jerady@bitbucket.org/Jerady/fontawesomefx.git'
+    //                        developerConnection 'scm:git:https://Jerady@bitbucket.org/Jerady/fontawesomefx.git'
+    //                        url 'https://bitbucket.org/Jerady/fontawesomefx'
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    javafx {
+        modules = [ 'javafx.controls', 'javafx.fxml' ]
+    }
+
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc
+    }
+
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allJava
+        classifier "sources"
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact sourceJar {
+                    classifier "sources"
+                }
+
+                artifact javadocJar {
+                    classifier "javadoc"
+                }
+            }
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+
+        testLogging {
+            events 'PASSED', 'FAILED', 'SKIPPED'
+        }
+
+        moduleOptions {
+            runOnClasspath = true
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    }
+
+}
+
+wrapper {
+    version = '5.0'
+    distributionType = Wrapper.DistributionType.ALL
+}
