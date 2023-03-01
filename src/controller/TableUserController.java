@@ -69,12 +69,20 @@ public class TableUserController implements Initializable {
 
     @FXML
     private Button btn_events;
+    
+    @FXML
+    private Button btn_echanges;
+    
+    @FXML
+    private Button btn_transporteurs;
 
     @FXML
     private Button btn_disconnect;
 
     @FXML
     private ImageView img_user;
+    
+    
 
     @FXML
     void click_disconnect(MouseEvent event) throws SQLException {
@@ -112,21 +120,14 @@ public class TableUserController implements Initializable {
     @FXML
     void mEnter(MouseEvent event) {
         Button btn = (Button) event.getSource();
-        if (btn.equals(btn_users)) {
-            btn_users.setStyle("-fx-background-color: rgb(232, 171, 0); -fx-text-fill: white;");
-        } else if (btn.equals(btn_events)) {
-            btn_events.setStyle("-fx-background-color: rgb(232, 171, 0); -fx-text-fill: white;");
-        }
+            btn.setStyle("-fx-background-color: rgb(232, 171, 0); -fx-text-fill: white;");
     }
 
     @FXML
     void mExit(MouseEvent event) {
         Button btn = (Button) event.getSource();
-        if (btn.equals(btn_users)) {
-            btn_users.setStyle("-fx-background-color: rgb(252, 215, 69); -fx-text-fill: white;");
-        } else if (btn.equals(btn_events)) {
-            btn_events.setStyle("-fx-background-color: rgb(252, 215, 69); -fx-text-fill: white;");
-        }
+            btn.setStyle("-fx-background-color: rgb(252, 215, 69); -fx-text-fill: white;");
+
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,6 +178,45 @@ public class TableUserController implements Initializable {
 
     @FXML
     private TextField searchBox;
+    
+    @FXML
+    void click_echanges(MouseEvent event) {
+        TableEchangeController tableEchangeController = new TableEchangeController();
+        tableEchangeController.setI(i);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableEchange.fxml"));
+
+            // set the controller instance
+            loader.setController(tableEchangeController);
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setOnCloseRequest(e -> {
+                
+                try {
+                    CRUDUser cr7=new CRUDUser();
+                    cr7.logout(currentUser.getEmail()); // Appelle la fonction supp()
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    @FXML
+    void click_transporteurs(MouseEvent event) throws SQLException {
+
+    }
 
     @FXML
     void click_events(MouseEvent event) {
@@ -362,6 +402,7 @@ public class TableUserController implements Initializable {
         table_users.setItems(userList);
 
     }
+    
 
     @FXML
     void click_ajout_user(MouseEvent event) {

@@ -80,7 +80,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="WECHAT" size="20" />
                </graphic>
             </Button>
-            <Button alignment="TOP_LEFT" layoutY="464.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Echanges" textFill="WHITE">
+            <Button fx:id="btn_echanges" alignment="TOP_LEFT" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#click_echanges" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Echanges" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -88,7 +88,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="RETWEET" size="20" />
                </graphic>
             </Button>
-            <Button alignment="TOP_LEFT" layoutY="508.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Transporteurs" textFill="WHITE">
+            <Button fx:id="btn_transporteurs" alignment="TOP_LEFT" layoutY="508.0" mnemonicParsing="false" onMouseClicked="#click_transporteurs" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Transporteurs" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
