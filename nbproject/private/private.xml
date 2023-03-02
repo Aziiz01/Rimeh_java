@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDEchange.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/StatController.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Evenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDEchange.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Echange.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDEvenement.java</file>
@@ -15,10 +16,12 @@
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/ModifEventController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableEventController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableEchangeController.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/tunitroc/Tunitroc.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDEvenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutUserController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutEchangeController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutEventController.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/tunitroc/FxMain.java</file>
         </group>
     </open-files>
 </project-private>
