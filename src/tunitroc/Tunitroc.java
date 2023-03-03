@@ -5,15 +5,7 @@
  */
 package tunitroc;
 
-import entities.Evenement;
-import entities.User;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Scanner;
-import services.CRUDEvenement;
-import services.CRUDUser;
-import utils.DBConnection;
 
 /**
  *
@@ -101,6 +93,5 @@ public class Tunitroc {
 //                        }
 //
 //                    } while (choice != 7);
-                }
     }
-   
+}

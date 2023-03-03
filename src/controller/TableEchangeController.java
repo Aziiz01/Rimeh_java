@@ -6,7 +6,6 @@
 package controller;
 
 import entities.Echange;
-import entities.Evenement;
 import entities.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -39,7 +38,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.CRUDEchange;
-import services.CRUDEvenement;
 import services.CRUDUser;
 
 /**
