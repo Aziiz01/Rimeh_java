@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="318.0" layoutY="218.0" prefHeight="306.0" prefWidth="249.0">
+         <children>
+            <Label prefHeight="75.0" text="Utilisateur: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label prefHeight="65.0" prefWidth="119.0" text="Valeur: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Pane layoutX="318.0" layoutY="14.0" prefHeight="158.0" prefWidth="936.0" style="-fx-background-color: #233244; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="29.0" layoutY="34.0" prefHeight="90.0" prefWidth="438.0" text="Modifier une fidelité" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox layoutX="568.0" layoutY="218.0" prefHeight="328.0" prefWidth="355.0">
+         <children>
+            <ComboBox fx:id="cbx_utilisateur" prefHeight="75.0" prefWidth="421.0" />
+            <TextField fx:id="txt_valeur" prefHeight="75.0" />
+         </children>
+      </VBox>
+      <Button fx:id="btn_modif" layoutX="401.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#click_modif" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #233244; -fx-border-radius: 20;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="4.0" layoutY="7.0" prefHeight="708.0" prefWidth="300.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="btn_disconnect1" alignment="CENTER" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" onMouseClicked="#click_disconnect" style="-fx-background-color: #fcd745; -fx-background-radius: 50 0; -fx-border-color: #ffff;" text="Déconnecter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="111.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/data/Bureau/rc/Edgein.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_nomUser" alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="30.0" prefWidth="263.0" text="placeholderNom" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_users" alignment="TOP_LEFT" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#click_users" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_events" alignment="TOP_LEFT" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#click_events" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BULLHORN" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="288.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Produits" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="332.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Paniers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BASKET" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Posts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT_ALT" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Commentaires" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="WECHAT" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="464.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Echanges" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="RETWEET" size="20" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="508.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Transporteurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_reclamations" alignment="TOP_LEFT" layoutY="552.0" mnemonicParsing="false" onMouseClicked="#click_reclamation" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Reclamations" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="RECYCLE" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_fidelites" alignment="TOP_LEFT" layoutY="596.0" mnemonicParsing="false" onMouseClicked="#click_fidelite" onMouseEntered="#mEnter" onMouseExited="#mExit" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Fidelites" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="GIFT" size="20" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
