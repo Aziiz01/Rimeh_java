@@ -6,6 +6,9 @@
 package crud;
 
 import entities.Produit;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,52 +23,65 @@ import utilis.Connexion;
  *
  * @author kheir
  */
+
 public class ProduitCrud {
-    
-  public void ajouterproduit (Produit p){
-      try{
-          String requete="INSERT INTO produit ( type , categorie , nom , libelle,photo,ville)"
-                  +"VALUES (?,?,?,?,?,?)";
-          PreparedStatement pst= Connexion.getInstance().getCnx().prepareStatement(requete);
-          pst.setString(1,p.getType());
-          pst.setString(2,p.getCategorie());
-          pst.setString(3,p.getNom());
-          pst.setString(4,p.getLibelle());
-          pst.setString(5,p.getPhoto());
-          pst.setString(6,p.getVille());
-          pst.executeUpdate();
-          System.out.println("Produit ajouté");
-      }catch(SQLException ex){
-          System.out.println(ex.getMessage());   
-      }   
-  }
-    
-    public List<Produit> affich(){
-        List<Produit> myList = new ArrayList<>();
-       
-        try
-        {
-            String requete="SELECT * FROM produit";
-            Statement st=Connexion.getInstance().getCnx().createStatement();
-            ResultSet rs = st.executeQuery(requete);
-            System.out.println(rs);
-            while (rs.next()){
-                Produit p = new Produit();
-                p.setId(rs.getInt(1));
-                p.setType(rs.getString(2));
-                p.setCategorie(rs.getString(3));
-                p.setNom(rs.getString(4));
-                p.setLibelle(rs.getString(5));
-                p.setPhoto(rs.getString(6));
-                p.setVille(rs.getString(7));
-                myList.add(p);
-            } 
-        }catch(SQLException ex){
-    System.out.println(ex.getMessage());  
-    }
-        return myList;
+     public Connection getConnection(){
+        Connection conn;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc1", "root","");
+            return conn;
+        }catch(Exception ex){
+            System.out.println("Error: " + ex.getMessage());
+            return null;
+        }
     }
     
+  public void ajouterproduit(Produit p, int id_user) {
+    try {
+        String requete = "INSERT INTO produit (type, categorie, nom, libelle, photo, ville, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pst = Connexion.getInstance().getCnx().prepareStatement(requete);
+        pst.setString(1, p.getType());
+        pst.setString(2, p.getCategorie());
+        pst.setString(3, p.getNom());
+        pst.setString(4, p.getLibelle());
+        pst.setString(5, p.getPhoto());
+        pst.setString(6, p.getVille());
+        pst.setInt(7, id_user);
+        pst.executeUpdate();
+        System.out.println("Produit ajouté");
+    } catch(SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+    
+    public List<Produit> affich() {
+    List<Produit> myList = new ArrayList<>();
+
+    try {
+        String requete = "SELECT * FROM produit";
+        Statement st = Connexion.getInstance().getCnx().createStatement();
+        ResultSet rs = st.executeQuery(requete);
+        while (rs.next()) {
+            Produit p = new Produit();
+            p.setId(rs.getInt("id"));
+            p.setType(rs.getString("type"));
+            p.setCategorie(rs.getString("categorie"));
+            p.setNom(rs.getString("nom"));
+            p.setLibelle(rs.getString("libelle"));
+            p.setPhoto(rs.getString("photo"));
+            p.setVille(rs.getString("ville"));
+            p.setId_user(rs.getInt("id_user"));
+            myList.add(p);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return myList;
+}
+
+   
+   
+   
     public void supprimerProduit(Produit t){
         
         String query = "DELETE FROM produit WHERE produit.id="+ t.getId()+" ";
@@ -78,8 +94,9 @@ public class ProduitCrud {
             System.out.println(e.getMessage());
         }
     }
-    
-    public void modifierProduit(Produit t ,String x,String y,String z,String a,String b ){
+   
+  
+      public void modifierProduit(Produit t ,String x,String y,String z,String a,String b  ){
             try{
         
         String requte ="update produit set type=?,categorie=?,nom=?,libelle=?,photo=?,ville=? where id="+ t.getId()+"";
@@ -98,6 +115,6 @@ public class ProduitCrud {
 
     }
     
+    }
 
-    }  
 }

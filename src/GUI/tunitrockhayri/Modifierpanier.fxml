@@ -2,12 +2,14 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunitrockhayri.ModifierpanierController">
    <children>
@@ -106,7 +108,6 @@
             <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="105.0" layoutY="104.0" size="7em" wrappingWidth="90.0" />
          </children>
       </AnchorPane>
-      <VBox layoutX="319.0" layoutY="177.0" prefHeight="522.0" prefWidth="936.0" />
       <Pane layoutX="318.0" layoutY="14.0" prefHeight="158.0" prefWidth="936.0" style="-fx-background-color: #233244 #233244; -fx-background-radius: 20;">
          <children>
             <Label layoutX="29.0" layoutY="34.0" prefHeight="90.0" prefWidth="438.0" text="Modifier Panier" textFill="WHITE">
@@ -114,6 +115,32 @@
                   <Font size="40.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="318.0" layoutY="191.0" prefHeight="500.0" prefWidth="936.0">
+         <children>
+            <ComboBox fx:id="addpanierS" layoutX="163.0" layoutY="21.0" prefHeight="31.0" prefWidth="203.0" />
+            <ComboBox fx:id="addpanierP" layoutX="164.0" layoutY="66.0" prefHeight="31.0" prefWidth="203.0" />
+            <TableView fx:id="addpaniertable" layoutX="166.0" layoutY="120.0" prefHeight="360.0" prefWidth="544.0">
+               <columns>
+                  <TableColumn fx:id="viewS" prefWidth="161.0" text="Produit_S" />
+                  <TableColumn fx:id="viewP" prefWidth="125.0" text="Produit_P" />
+                  <TableColumn fx:id="viewdate" prefWidth="123.0" text="Date" />
+                  <TableColumn fx:id="viewtrans" prefWidth="133.0" text="Transporteur" />
+               </columns>
+            </TableView>
+            <ComboBox fx:id="addpaniertrans" layoutX="500.0" layoutY="65.0" prefHeight="31.0" prefWidth="217.0" />
+            <DatePicker fx:id="addpanierdate" layoutX="500.0" layoutY="24.0" />
+            <Button fx:id="mdfpanier_btn" layoutX="745.0" layoutY="25.0" mnemonicParsing="false" onAction="#ajouterpanier" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="supppanier_btn1" layoutX="745.0" layoutY="87.0" mnemonicParsing="false" onAction="#ajouterpanier" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

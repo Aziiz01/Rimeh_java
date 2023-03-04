@@ -6,6 +6,7 @@
 package entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 /**
@@ -13,80 +14,77 @@ import java.sql.Date;
  * @author kheir
  */
 public class Panier {
-private Integer panierid;
-    private String etat;
-    private Date  date;
-    private Integer produits;
-    private Integer produitr;        
-    private Integer transporteur;
+    private int id;
+    private LocalDate date;
+    private int produit_s;
+    private int produit_r;
+    private boolean transporteurB;
     
 
-    public Panier(Integer panierid, String etat, Date date,Integer produits,Integer produitr,Integer transporteur){
-         this.panierid =panierid;   
-         this.etat =etat; 
-         this.date =date; 
-         this.produits =produits; 
-         this.produitr =produitr; 
-         this.transporteur =transporteur; 
-         
-         
+    public Panier(int id, LocalDate date ,int produit_s, int produit_r, boolean transporteurB) {
+        this.id = id;
+        this.date = date;
+        this.produit_s = produit_s;
+        this.produit_r = produit_r;
+        this.transporteurB = transporteurB;
         
-
+        
     }
 
-    public Integer getPanierid() {
-        return panierid;
+   
+    
+    
+
+    public int getId() {
+        return id;
     }
 
-    public String getEtat() {
-        return etat;
+    public int getProduit_s() {
+        return produit_s;
     }
 
-    public Date getDate() {
+    public int getProduit_r() {
+        return produit_r;
+    }
+
+    public boolean getTransporteurB() {
+        return transporteurB;
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public Integer getProduits() {
-        return produits;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Integer getProduitr() {
-        return produitr;
+    public void setProduit_s(int produit_s) {
+        this.produit_s = produit_s;
     }
 
-    public Integer getTransporteur() {
-        return transporteur;
+    public void setProduit_r(int produit_r) {
+        this.produit_r = produit_r;
     }
 
-    public void setPanierid(Integer panierid) {
-        this.panierid = panierid;
+    public void setTransporteurB(boolean transporteurB) {
+        this.transporteurB = transporteurB;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
-
-    public void setProduits(Integer produits) {
-        this.produits = produits;
-    }
-
-    public void setProduitr(Integer produitr) {
-        this.produitr = produitr;
-    }
-
-    public void setTransporteur(Integer transporteur) {
-        this.transporteur = transporteur;
+     public Panier() {
     }
 
     @Override
     public String toString() {
-        return "Panier{" + "panierid=" + panierid + ", etat=" + etat + ", date=" + date + ", produits=" + produits + ", produitr=" + produitr + ", transporteur=" + transporteur + '}';
+        return "Panier{" + "id=" + id + ", date=" + date +", produit_s=" + produit_s + ", produit_r=" + produit_r + ", transporteurB=" + transporteurB +  '}';
     }
-    
-    
 
+    
+    
+    
 }
+
+

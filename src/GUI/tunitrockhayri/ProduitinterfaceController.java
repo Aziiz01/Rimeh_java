@@ -123,13 +123,13 @@ public class ProduitinterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        showBooks();
+        //showBooks();
     }
     
     public Connection getConnection(){
         Connection conn;
         try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc1", "root","");
             return conn;
         }catch(Exception ex){
             System.out.println("Error: " + ex.getMessage());
@@ -137,42 +137,39 @@ public class ProduitinterfaceController implements Initializable {
         }
     }
     
-    public ObservableList<Produit> getProduitList(){
-        ObservableList<Produit> produitsList = FXCollections.observableArrayList();
-        Connection conn = getConnection();
-        String query = "SELECT * FROM produit";
-        Statement st;
-        ResultSet rs;
-        
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-            Produit produit;
-            while(rs.next()){
-                produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"),rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"));
-                produitsList.add(produit);
-            }
-                
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return produitsList;
-    }
     
-    public void showBooks(){
-        ObservableList<Produit> list = getProduitList();
-        
-        
-        viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
-        viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
-        viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
-        viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
-        viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
-        //viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("photo"));
+   public ObservableList<Produit> getProduitList(){
+    ObservableList<Produit> produitsList = FXCollections.observableArrayList();
+    Connection conn = getConnection();
+    String query = "SELECT * FROM produit";
+    Statement st;
+    ResultSet rs;
 
-        addproduittable.setItems(list);
-        
+    try{
+        st = conn.createStatement();
+        rs = st.executeQuery(query);
+        Produit produit;
+        while(rs.next()){
+            produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"), rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"), rs.getInt("id_user"));
+            produitsList.add(produit);
+        }
+    } catch(Exception ex){
+        ex.printStackTrace();
     }
+    return produitsList;
+}
+    
+     public void showProduit(){
+    ObservableList<Produit> list = getProduitList();
+    
+    viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
+    viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
+    viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
+    viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
+    viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
+
+    addproduittable.setItems(list);
+}
     
 
     @FXML
@@ -199,7 +196,7 @@ addproduittype.clear();
 addproduitnom.clear();
     }
 
-    @FXML
+    /*@FXML
     private void ajouterproduit(javafx.event.ActionEvent event) {
         try{ ProduitCrud pc = new ProduitCrud();
         Produit p =new Produit();  
@@ -238,7 +235,7 @@ addproduitnom.clear();
         
     }
 
-    @FXML
+    /*@FXML
     private void modifierProduit(javafx.event.ActionEvent event) {
         ProduitCrud pc = new ProduitCrud();
         
@@ -253,7 +250,7 @@ addproduitnom.clear();
         pc.modifierProduit(p,addproduittype.getText(),addproduitcate.getText(),addproduitnom.getText(),"azeee",addproduitville.getText());
         actualiser();
         reset1();
-    }
+    }*/
 
     @FXML
     private void redirection(javafx.event.ActionEvent event) {

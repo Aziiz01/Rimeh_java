@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunitrockhayri.AjouterproduitController">
+<AnchorPane fx:id="main_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunitrockhayri.AjouterproduitController">
    <children>
       <AnchorPane layoutX="4.0" layoutY="7.0" prefHeight="708.0" prefWidth="300.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
          <children>
@@ -154,17 +158,33 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="addproduit_btn" layoutX="11.0" layoutY="297.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Photo" textFill="WHITE" />
-            <ImageView fitHeight="166.0" fitWidth="158.0" layoutX="166.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
-            <TableView fx:id="addproduittable" layoutX="339.0" layoutY="14.0" prefHeight="488.0" prefWidth="611.0" style="-fx-background-color: #f7 #233244cb4f; -fx-background-radius: 20;" visible="false">
+            <Button fx:id="availableBooks_importBtn" layoutX="11.0" layoutY="364.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Photo" textFill="WHITE" />
+            <ImageView fx:id="availableBooks_imageView" fitHeight="166.0" fitWidth="158.0" layoutX="168.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" />
+            <TableView fx:id="addproduittable" layoutX="350.0" layoutY="-6.0" prefHeight="429.0" prefWidth="591.0" style="-fx-background-color: #f7 #233244cb4f; -fx-background-radius: 20;" visible="false">
                <columns>
                   <TableColumn fx:id="viewtype" prefWidth="90.0" text="Type" />
-                  <TableColumn fx:id="viewcateg" minWidth="0.0" prefWidth="122.0" text="Categorie" />
-                  <TableColumn fx:id="viewnom" prefWidth="97.0" text="Nom" />
-                  <TableColumn fx:id="viewlib" minWidth="0.0" prefWidth="105.0" text="Libelle" />
-                  <TableColumn fx:id="viewville" prefWidth="302.0" text="Ville" />
+                  <TableColumn fx:id="viewcateg" minWidth="0.0" prefWidth="92.0" text="Categorie" />
+                  <TableColumn fx:id="viewnom" prefWidth="63.0" text="Nom" />
+                  <TableColumn fx:id="viewlib" minWidth="0.0" prefWidth="85.0" text="Libelle" />
+                  <TableColumn fx:id="viewville" prefWidth="75.0" text="Ville" />
+                  <TableColumn fx:id="viewlib1" minWidth="0.0" prefWidth="106.0" text="Libelle" />
+                  <TableColumn fx:id="viewiduser" minWidth="0.0" prefWidth="92.0" text="User" />
                </columns>
             </TableView>
+            <AreaChart fx:id="dashboard_incomeChart" layoutX="389.0" layoutY="22.0" prefHeight="419.0" prefWidth="535.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
+            <ComboBox fx:id="addproduituser" layoutX="97.0" layoutY="281.0" prefWidth="150.0" />
+            <Label layoutX="30.0" layoutY="282.0" text="User">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

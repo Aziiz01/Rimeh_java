@@ -127,11 +127,12 @@
                <children>
                   <TableView fx:id="addproduittable" prefHeight="430.0" prefWidth="890.0" style="-fx-background-color: #f7 #233244cb4f; -fx-background-radius: 20;" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn fx:id="viewtype" prefWidth="140.0" text="Type" />
-                        <TableColumn fx:id="viewcateg" prefWidth="241.0" text="Categorie" />
-                        <TableColumn fx:id="viewnom" prefWidth="194.0" text="Nom" />
-                        <TableColumn fx:id="viewlib" prefWidth="167.0" text="Libelle" />
-                        <TableColumn fx:id="viewville" prefWidth="186.0" text="Ville" />
+                        <TableColumn fx:id="viewtype" prefWidth="150.0" text="Type" />
+                        <TableColumn fx:id="viewcateg" prefWidth="162.0" text="Categorie" />
+                        <TableColumn fx:id="viewnom" prefWidth="178.0" text="Nom" />
+                        <TableColumn fx:id="viewlib" prefWidth="223.0" text="Libelle" />
+                        <TableColumn fx:id="viewville" prefWidth="117.0" text="Ville" />
+                        <TableColumn fx:id="viewiduser" prefWidth="102.0" text="User" />
                      </columns>
                   </TableView>
                   <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="936.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
@@ -141,7 +142,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <TextField fx:id="searchproduit" prefHeight="32.0" prefWidth="294.0" promptText="Chercher un utilisateur..." style="-fx-background-color: #fcd745;">
+                        <TextField fx:id="searchField" prefHeight="32.0" prefWidth="294.0" promptText="Chercher un utilisateur..." style="-fx-background-color: #fcd745;">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
