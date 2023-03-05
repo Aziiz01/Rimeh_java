@@ -10,13 +10,17 @@ import entities.Produit;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import utilis.Connexion;
 
 /**
  * FXML Controller class
@@ -57,24 +62,38 @@ public class Gestionproduit1Controller implements Initializable {
     private TableColumn<Produit, String> viewlib;
     @FXML
     private TableColumn<Produit, String> viewville;
-    @FXML
-    private TextField searchproduit;
     
     
     List<Produit> Produit;
     ProduitCrud pcd = new ProduitCrud();
+    @FXML
+    private TextField searchField;
+    @FXML
+    private TableColumn<Produit, Integer> viewiduser;
+    
     public void actualiser(){
         Produit =pcd.affich();
         addproduittable.getItems().setAll(Produit);
     }
+    private ObservableList<Produit> produitsList;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       showBooks();
+    produitsList = getProduitList();
+
+       showProduit();       
+    FilteredList<Produit> filteredList = new FilteredList<>(produitsList, p -> true);
+    searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+        filterProduits(filteredList, newValue);
+        addproduittable.setItems(filteredList);
+    });
+       
+     
     }    
 public Connection getConnection(){
         Connection conn;
         try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc1", "root","");
             return conn;
         }catch(Exception ex){
             System.out.println("Error: " + ex.getMessage());
@@ -83,43 +102,39 @@ public Connection getConnection(){
     }
     
     public ObservableList<Produit> getProduitList(){
-        ObservableList<Produit> produitsList = FXCollections.observableArrayList();
-        Connection conn = getConnection();
-        String query = "SELECT * FROM produit";
-        Statement st;
-        ResultSet rs;
-        
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-            Produit produit;
-            while(rs.next()){
-                produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"),rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"));
-                produitsList.add(produit);
-            }
-                
-        }catch(Exception ex){
-            ex.printStackTrace();
+    ObservableList<Produit> produitsList = FXCollections.observableArrayList();
+    Connection conn = getConnection();
+    String query = "SELECT * FROM produit";
+    Statement st;
+    ResultSet rs;
+
+    try{
+        st = conn.createStatement();
+        rs = st.executeQuery(query);
+        Produit produit;
+        while(rs.next()){
+            produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"), rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"), rs.getInt("id_user"));
+            produitsList.add(produit);
         }
-        return produitsList;
+    } catch(Exception ex){
+        ex.printStackTrace();
     }
+    return produitsList;
+}
+        private ObservableList<Produit> list;
+
+  public void showProduit(){
+    ObservableList<Produit> list = getProduitList();
     
- public void showBooks(){
-        ObservableList<Produit> list = getProduitList();
-        
-        
-        viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
-        viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
-        viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
-        viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
-        viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
+    viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
+    viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
+    viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
+    viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
+    viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
+    viewiduser.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id_user"));
 
-
-
-        
-        addproduittable.setItems(list);
-        
-    }   
+    addproduittable.setItems(list);
+}
     
     
     @FXML
@@ -166,5 +181,26 @@ public Connection getConnection(){
         }
     }
     
+
+private void filterProduits(FilteredList<Produit> filteredList, String searchValue) {
+    filteredList.setPredicate(produit -> {
+        if (searchValue == null || searchValue.isEmpty()) {
+            return true;
+        }
+        String lowerCaseFilter = searchValue.toLowerCase();
+        if (produit.getNom().toLowerCase().contains(lowerCaseFilter)) {
+            return true; // filtre sur le nom du produit
+        } else if (produit.getType().toLowerCase().contains(lowerCaseFilter)) {
+            return true; // filtre sur le type du produit
+        }
+        return false; // ne correspond pas au filtre
+    });
+}
+
+    
+
+   
+
+   
     
 }

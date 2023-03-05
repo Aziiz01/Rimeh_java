@@ -125,20 +125,6 @@
                   <RowConstraints maxHeight="471.0" minHeight="10.0" prefHeight="438.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TableView prefHeight="430.0" prefWidth="890.0" style="-fx-background-color: #f7 #233244cb4f; -fx-background-radius: 20;" GridPane.rowIndex="1">
-                     <columns>
-                        <TableColumn prefWidth="41.0" text="ID" />
-                        <TableColumn prefWidth="109.0" text="Email" />
-                        <TableColumn prefWidth="119.0" text="Mot De Passe" />
-                        <TableColumn prefWidth="73.0" text="Nom" />
-                        <TableColumn prefWidth="76.0" text="Prenom" />
-                        <TableColumn prefWidth="115.0" text="Photo" />
-                        <TableColumn prefWidth="160.0" text="Numero de Telephone" />
-                        <TableColumn minWidth="0.0" prefWidth="84.0" text="Ville" />
-                        <TableColumn minWidth="0.0" prefWidth="84.0" text="Fidélité" />
-                        <TableColumn minWidth="0.0" prefWidth="94.0" text="Role" />
-                     </columns>
-                  </TableView>
                   <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="936.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="SEARCH" size="1.5em">
@@ -146,7 +132,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <TextField fx:id="searchpanier" prefHeight="32.0" prefWidth="294.0" promptText="Chercher un utilisateur..." style="-fx-background-color: #fcd745;">
+                        <TextField prefHeight="32.0" prefWidth="294.0" promptText="Chercher un utilisateur..." style="-fx-background-color: #fcd745;">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -178,6 +164,14 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
+                  <TableView fx:id="panierTableView" prefHeight="360.0" prefWidth="544.0" GridPane.rowIndex="1">
+                     <columns>
+                        <TableColumn fx:id="produitSColumn" prefWidth="195.0" text="Produit_S" />
+                        <TableColumn fx:id="produitRColumn" prefWidth="228.0" text="Produit_P" />
+                        <TableColumn fx:id="dateColumn" prefWidth="239.0" text="Date" />
+                        <TableColumn fx:id="transporteurBColumn" prefWidth="273.0" text="Transporteur" />
+                     </columns>
+                  </TableView>
                </children>
             </GridPane>
          </children>

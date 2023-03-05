@@ -5,11 +5,14 @@
  */
 package entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author kheir
  */
-public class Produit {
+
+    public class Produit {
  
     private int id;
     private String type;
@@ -18,21 +21,20 @@ public class Produit {
     private String libelle;        
     private String ville;
     private String photo;
-    
+    private int id_user;
 
-    public Produit(int id, String type, String categorie,String nom,String libelle,String photo, String ville ){
-         this.id =id;   
-         this.type =type; 
-         this.categorie =categorie; 
-         this.nom =nom; 
-         this.libelle =libelle; 
-         this.photo =photo; 
-         this.ville =ville; 
-
-         
-        
-
+    public Produit(int id, String type, String categorie, String nom, String libelle, String photo, String ville, int id_user) {
+         this.id = id;   
+         this.type = type; 
+         this.categorie = categorie; 
+         this.nom = nom; 
+         this.libelle = libelle; 
+         this.photo = photo; 
+         this.ville = ville;
+         this.id_user = id_user;
     }
+
+    
 
     public int getId() {
         return id;
@@ -60,6 +62,10 @@ public class Produit {
 
     public String getPhoto() {
         return photo;
+    }
+
+    public int getId_user() {
+        return id_user;
     }
 
     public void setId(int id) {
@@ -90,15 +96,17 @@ public class Produit {
         this.photo = photo;
     }
 
-    
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
 
     public Produit() {
     }
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", type=" + type + ", categorie=" + categorie + ", nom=" + nom + ", libelle=" + libelle + ", photo=" + photo + ", ville=" + ville + '}';
-    }
-    
-    
+        return "Produit{" + "id=" + id + ", type=" + type + ", categorie=" + categorie + ", nom=" + nom + ", libelle=" + libelle + ", photo=" + photo + ", ville=" + ville + ", id_user=" + id_user + '}';
+    }   
 }
+
+

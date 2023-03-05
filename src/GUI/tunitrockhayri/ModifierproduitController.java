@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tunitrockhayri;
-
+import javafx.scene.input.MouseEvent;
 import crud.ProduitCrud;
 import entities.Produit;
 import java.io.IOException;
@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -23,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,23 +42,17 @@ public class ModifierproduitController implements Initializable {
     @FXML
     private Button btnmdfaccPN;
     @FXML
-    private TextField addproduitlibelle;
-    @FXML
-    private TextField addproduitville;
-    @FXML
-    private TextField addproduitnom;
-    @FXML
-    private TextField addproduitcate;
-    @FXML
-    private TextField addproduittype;
+    private Button addproduit_btn;
     @FXML
     private Button modproduit_btn;
     @FXML
-    private Button addproduit_btn;
-    @FXML
-    private Button ajtproduit_btn1;
-    @FXML
-    private TableView<Produit> addproduittable;
+    private Button supprimer_btn;
+    private TextField addproduitlibelle;
+    private TextField addproduitville;
+    private TextField addproduitnom;
+    private TextField addproduitcate;
+    private TextField addproduittype;
+    
     @FXML
     private TableColumn<Produit, String > viewtype;
     @FXML
@@ -67,6 +63,8 @@ public class ModifierproduitController implements Initializable {
     private TableColumn<Produit, String> viewlib;
     @FXML
     private TableColumn<Produit, String> viewville;
+    @FXML
+    private TableView<Produit> addproduittable;
 
     /**
      * Initializes the controller class.
@@ -75,15 +73,32 @@ public class ModifierproduitController implements Initializable {
     
     List<Produit> Produit;
     ProduitCrud pcd = new ProduitCrud();
-    
+    @FXML
+    private TableColumn<Produit, Integer> viewuser;
+    @FXML
+    private ComboBox<String> addproduituser;
+    @FXML
+    private TextField libelleCol;
+    @FXML
+    private TextField villeCol;
+    @FXML
+    private TextField nomCol;
+    @FXML
+    private TextField cateCol;
+    @FXML
+    private TextField typeCol;
+   
     
     public void actualiser(){
         Produit =pcd.affich();
         addproduittable.getItems().setAll(Produit);
     }
+        private HashMap<String, Integer> userMap = new HashMap<>();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showProduct();
+        showProduit();
+        
     }    
 
     @FXML
@@ -110,7 +125,7 @@ public class ModifierproduitController implements Initializable {
  public Connection getConnection(){
         Connection conn;
         try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tunitroc1", "root","");
             return conn;
         }catch(Exception ex){
             System.out.println("Error: " + ex.getMessage());
@@ -118,100 +133,88 @@ public class ModifierproduitController implements Initializable {
         }
     }
     
-    public ObservableList<Produit> getProduitList(){
-        ObservableList<Produit> produitsList = FXCollections.observableArrayList();
-        Connection conn = getConnection();
-        String query = "SELECT * FROM produit";
-        Statement st;
-        ResultSet rs;
-        
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-            Produit produit;
-            while(rs.next()){
-                produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"),rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"));
-                produitsList.add(produit);
-            }
-                
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return produitsList;
-    }
-    
-    public void showProduct(){
-        ObservableList<Produit> list = getProduitList();
-        
-        
-        viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
-        viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
-        viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
-        viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
-        viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
-addproduittable.setItems(list);
-        
-    }
+     public ObservableList<Produit> getProduitList(){
+    ObservableList<Produit> produitsList = FXCollections.observableArrayList();
+    Connection conn = getConnection();
+    String query = "SELECT * FROM produit";
+    Statement st;
+    ResultSet rs;
 
+    try{
+        st = conn.createStatement();
+        rs = st.executeQuery(query);
+        Produit produit;
+        while(rs.next()){
+            produit = new Produit(rs.getInt("id"), rs.getString("type"), rs.getString("categorie"), rs.getString("nom"), rs.getString("libelle"), rs.getString("photo"), rs.getString("ville"), rs.getInt("id_user"));
+            produitsList.add(produit);
+        }
+    } catch(Exception ex){
+        ex.printStackTrace();
+    }
+    return produitsList;
+}
+    
+    public void showProduit(){
+    ObservableList<Produit> list = getProduitList();
+    
+    viewtype.setCellValueFactory(new PropertyValueFactory<Produit, String>("type"));
+    viewcateg.setCellValueFactory(new PropertyValueFactory<Produit, String>("categorie"));
+    viewnom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
+    viewville.setCellValueFactory(new PropertyValueFactory<Produit, String>("ville"));
+    viewlib.setCellValueFactory(new PropertyValueFactory<Produit, String>("libelle"));
+    viewuser.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id_user"));
+
+    addproduittable.setItems(list);
+}
 
     private void reset1() {
-        addproduitlibelle.clear();
+        libelleCol.clear();
 
-addproduitville.clear();
+        villeCol.clear();
 
-addproduitcate.clear();
+        cateCol.clear();
 
-addproduittype.clear();
+        typeCol.clear();
 
-addproduitnom.clear();
-    }
+        nomCol.clear();
+    } 
+    
 
-    private void ajouterproduit(javafx.event.ActionEvent event) {
-        try{ ProduitCrud pc = new ProduitCrud();
-        Produit p =new Produit();  
-        p.setId(0);
-        p.setType(addproduittype.getText());
-        p.setCategorie(addproduitcate.getText());
-        p.setNom(addproduitnom.getText());
-        p.setLibelle(addproduitlibelle.getText());
-        p.setPhoto("sszsss");
-        p.setVille(addproduitville.getText());
-        pc.ajouterproduit(p);
-        actualiser();
-        reset1();
-        System.out.println("ajouté");}
-        catch(Exception ex){
-            System.out.println(ex);
-       }
-            
-    }
 
-    @FXML
+
+@FXML
     private void supprimerProduit(javafx.event.ActionEvent event) {
        ProduitCrud  eccd = new  ProduitCrud ();
         Produit p;   
         p= addproduittable.getSelectionModel().getSelectedItem();
         eccd.supprimerProduit(p);
-        actualiser();
-        //Alert alert = new Alert(Alert.AlertType.ERROR);
- 
+        actualiser();  
     }
 
-    @FXML
+
+
+
+ @FXML
     private void modifierProduit(javafx.event.ActionEvent event) {
         ProduitCrud pc = new ProduitCrud();
         
         Produit p ;
         p=addproduittable.getSelectionModel().getSelectedItem();
-        p.setType(addproduittype.getText());
-        p.setCategorie(addproduitcate.getText());
-        p.setNom(addproduitnom.getText());
-        p.setLibelle(addproduitlibelle.getText());
+        p.setType(typeCol.getText());
+        p.setCategorie(cateCol.getText());
+        p.setNom(nomCol.getText());
+        p.setLibelle(libelleCol.getText());
         
-        p.setVille(addproduitville.getText());
-        pc.modifierProduit(p,addproduittype.getText(),addproduitcate.getText(),addproduitnom.getText(),"azeee",addproduitville.getText());
+        p.setVille(villeCol.getText());
+        pc.modifierProduit(p,typeCol.getText(),cateCol.getText(),nomCol.getText(),"azeee",villeCol.getText());
         actualiser();
         reset1();
     }
 
 }
+
+
+
+    
+
+
