@@ -3,38 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/ModifEvent.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/TableEchange.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/TableArchive.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/entities/User.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/TableTransporteurController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/TableTransporteur.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/InterfaceCRUDUser.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/AjoutEchange.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/CRUDPost.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/AjoutUserController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/TableEchangeController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/ArchiveController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/AjoutEchangeController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/TableEvent.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/CRUDTransporteur.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/ModifTransporteurController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/ModifUserController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/AjoutTransporteurController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/ModifEchangeController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/TableUser.fxml</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/CRUDUser.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/CRUDEvenement.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/ModifEventController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/InterfaceCRUDTransporteur.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/entities/Transporteur.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/TableEventController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/InterfaceCRUDPost.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/services/CRUDEchange.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/controller/TableUserController.java</file>
-            <file>file:/C:/Users/azizn/OneDrive/Bureau/clone/TuniTrocPI/src/GUI/ModifTransporteur.fxml</file>
-=======
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/StatController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Evenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDEchange.java</file>
@@ -65,7 +33,6 @@
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/tunitroc/Tunitroc.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDEvenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutEchangeController.java</file>
->>>>>>> refs/remotes/echange-transporteur/master
         </group>
     </open-files>
 </project-private>

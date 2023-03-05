@@ -5,7 +5,6 @@
  */
 package tunitroc;
 
-<<<<<<< HEAD
 import entities.Evenement;
 import entities.User;
 import java.sql.Connection;
@@ -18,9 +17,7 @@ import javax.swing.JOptionPane;
 import services.CRUDEvenement;
 import services.CRUDUser;
 import utils.DBConnection;
-=======
 import java.sql.SQLException;
->>>>>>> refs/remotes/echange-transporteur/master
 
 /**
  *
@@ -32,7 +29,6 @@ public class Tunitroc {
      * @param args the command line arguments
      * @throws java.sql.SQLException
      */
-<<<<<<< HEAD
        DBConnection TuniTrocDB = DBConnection.getInstance();
         Connection con = null;
         public static Connection connectDb() {
@@ -49,7 +45,6 @@ public class Tunitroc {
                 }
     
    
-=======
     public static void main(String[] args) throws SQLException {
 //        DBConnection TuniTrocDB = DBConnection.getInstance();
 //
@@ -128,4 +123,3 @@ public class Tunitroc {
 //                    } while (choice != 7);
     }
 }
->>>>>>> refs/remotes/echange-transporteur/master

@@ -5,12 +5,9 @@
  */
 package controller;
 
-<<<<<<< HEAD
 import entities.Echange;
 import tunitroc.Tunitroc;
 import entities.Evenement;
-=======
->>>>>>> refs/remotes/echange-transporteur/master
 import entities.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,11 +17,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
 import java.time.LocalDate;
 import java.util.Optional;
-=======
->>>>>>> refs/remotes/echange-transporteur/master
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
