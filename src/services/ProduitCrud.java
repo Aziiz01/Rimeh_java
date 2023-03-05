@@ -25,7 +25,6 @@ import utils.DBConnection;
  */
 
 public class ProduitCrud {
-    
     Connection TuniTrocDB = DBConnection.getConnection();
      public Connection getConnection(){
         Connection conn;

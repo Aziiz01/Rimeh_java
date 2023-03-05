@@ -45,7 +45,7 @@ public class Tunitroc {
                 }
     
    
-//   public static void main(String[] args) throws SQLException {
+
 //        DBConnection TuniTrocDB = DBConnection.getInstance();
 //
 //        Scanner scanner = new Scanner(System.in);
@@ -121,5 +121,4 @@ public class Tunitroc {
 //                        }
 //
 //                    } while (choice != 7);
-//    }
 //}
