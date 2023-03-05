@@ -19,6 +19,10 @@ public class Echange {
     public Echange() {
     }
 
+    public Echange(int id_panier){
+    this.id_panier=id_panier;
+    } 
+    
     public Echange(int id_panier, String etat, int id_transporteur) {
         this.id_panier = id_panier;
         this.etat = etat;

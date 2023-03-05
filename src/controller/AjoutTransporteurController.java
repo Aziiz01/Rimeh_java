@@ -5,58 +5,83 @@
  */
 package controller;
 
-import entities.Echange;
-import tunitroc.Tunitroc;
-import entities.Evenement;
+/**
+ *
+ * @author azizn
+ */
+ 
+import entities.Transporteur;
 import entities.User;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.nio.file.Files;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
+    import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-<<<<<<< HEAD
-import services.CRUDEchange;
-import services.CRUDEvenement;
-=======
->>>>>>> refs/remotes/echange-transporteur/master
+import services.CRUDTransporteur;
 import services.CRUDUser;
-import static tunitroc.Tunitroc.connectDb;
-import utils.DBConnection;
 
-/**
- * FXML Controller class
- *
- * @author ZeroS TF
- */
-public class ModifEchangeController implements Initializable {
+public class AjoutTransporteurController implements Initializable {
 
-     //CONSTANT STUFF TO COPY
-    public Echange echange_e;
-    public int i;
+    @FXML
+    private TextField txt_nom;
+
+    @FXML
+    private TextField txt_prenom;
+
+    @FXML
+    private Button btn_upload;
+
+    @FXML
+    private TextField txt_numtel;
+
+    @FXML
+    private Button btn_ajout;
+
+    @FXML
+    private Button btn_disconnect1;
+
+    @FXML
+    private ImageView img_user;
+
+    @FXML
+    private Label label_nomUser;
+
+    @FXML
+    private Button btn_users;
+
+    @FXML
+    private Button btn_events;
+
+    @FXML
+    private Button btn_echanges;
+
+    @FXML
+    private Button btn_transporteurs;
+    
+        public byte[] uploadedImage = null;
+
+     public int i;
     public CRUDUser cr7=new CRUDUser();
     public User currentUser;
 
@@ -75,86 +100,64 @@ public class ModifEchangeController implements Initializable {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
-     public Echange getEchange_e() {
-        return echange_e;
+
+    @FXML
+    void click_ajout(MouseEvent event) throws SQLException {
+ CRUDTransporteur sa = new CRUDTransporteur();
+
+        // Get the values from the input fields
+        String nom = txt_nom.getText();
+        String prenom = txt_prenom.getText();
+String numTelString = txt_numtel.getText();
+        
+        // Validate the input values
+        boolean inputValid = true;
+        String errorMessage = "";
+
+        
+
+      // Check if numTel has 8 digits
+int numTel = 0;
+try {
+    numTel = Integer.parseInt(numTelString);
+    if (numTelString.length() != 8) {
+        throw new NumberFormatException();
     }
-
-    public void setEchange_e(Echange echange_e) {
-        this.echange_e = echange_e;
-    }
-
-    @FXML
-    private Label label_nomUser;
-
-    @FXML
-    private Button btn_users;
-
-    @FXML
-    private Button btn_events;
-
-    @FXML
-    private Button btn_disconnect;
-    @FXML
-    private ImageView img_user;
-    
-    @FXML
-    private Button btn_echanges;
-
-    @FXML
-    private Button btn_transporteurs;
-    @FXML
-    private Button btn_modif;
-    
-    @FXML
-    private ComboBox<Integer> cbx_panier;
-
-    @FXML
-    private ComboBox<String> cbx_etat;
-
-    @FXML
-    private ComboBox<Integer> cbx_transp;
-
-    @FXML
-    void click_modif(MouseEvent event) throws SQLException {
-int id_panier = cbx_panier.getValue();
-String etat = cbx_etat.getValue();
-int id_transporteur = cbx_transp.getValue();
-
-// Vérification que tous les champs sont remplis
-if (etat.isEmpty()) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Erreur");
-    alert.setHeaderText("Tous les champs sont obligatoires");
-    alert.showAndWait();
-    return;
+} catch (NumberFormatException e) {
+    inputValid = false;
+    errorMessage += "Le champ numéro de téléphone doit être composé de 8 chiffres.\n";
 }
 
+        
 
+        // Check if any field is empty
+        if (nom.isEmpty() || prenom.isEmpty()  || numTelString.isEmpty()) {
+            inputValid = false;
+            errorMessage += "Tous les champs doivent être remplis.\n";
+        }
 
+        if (inputValid) {
+            // Create a new user with the input values
+            Transporteur transporteur = new Transporteur(nom, prenom, uploadedImage, numTel);
 
-// Demander une confirmation avant la modification
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirmation");
-        confirmation.setHeaderText("Voulez-vous vraiment modifier cet échange ?");
-        Optional<ButtonType> result = confirmation.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            Echange newEchange = new Echange(id_panier,etat,id_transporteur);
-            CRUDEchange crudEchange = new CRUDEchange();
-            crudEchange.modifierEchange(newEchange, echange_e.getId());
+            // Call the method to add the user to the database
+            sa.ajouterTransporteur(transporteur);
 
+            // Show a success message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Succès");
-            alert.setHeaderText("Echange modifié avec succès");
+            alert.setTitle("Ajout transporteur");
+            alert.setHeaderText(null);
+            alert.setContentText("Transporteur ajouté avec succès !");
             alert.showAndWait();
 
-            TableEchangeController tableEchangeController = new TableEchangeController();
-            tableEchangeController.setI(i);
+            TableTransporteurController tabletranspController = new TableTransporteurController();
+            tabletranspController.setI(i);
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableEchange.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableTransporteur.fxml"));
 
                 // set the controller instance
-                loader.setController(tableEchangeController);
+                loader.setController(tabletranspController);
 
                 Parent root = loader.load();
 
@@ -177,10 +180,32 @@ if (etat.isEmpty()) {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
+        } else {
+            // Show the error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
-        
     }
-
+@FXML
+    private void click_upload(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+        File selectedFile = fileChooser.showOpenDialog(btn_upload.getScene().getWindow());
+        if (selectedFile != null) {
+            try {
+                uploadedImage = Files.readAllBytes(selectedFile.toPath());
+                // Do something with the image bytes (e.g. pass them to a method that saves them to the database)
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     @FXML
     void click_disconnect(MouseEvent event) throws SQLException {
         CRUDUser sa = new CRUDUser();
@@ -251,8 +276,38 @@ if (etat.isEmpty()) {
 
     @FXML
     void click_transporteurs(MouseEvent event) {
+TableTransporteurController tableTranspController = new TableTransporteurController();
+        tableTranspController.setI(i);
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableTransporteur.fxml"));
+
+            // set the controller instance
+            loader.setController(tableTranspController);
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setOnCloseRequest(e -> {
+                
+                try {
+                    CRUDUser cr7=new CRUDUser();
+                    cr7.logout(currentUser.getEmail()); // Appelle la fonction supp()
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+
 
     @FXML
     void click_users(MouseEvent event) {
@@ -335,12 +390,14 @@ if (etat.isEmpty()) {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+   
 
-Connection con = connectDb();
-       
-        try {
+    
+
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+try {
             currentUser=cr7.getUserById(i);
         } catch (SQLException ex) {
             Logger.getLogger(AjoutEventController.class.getName()).log(Level.SEVERE, null, ex);
@@ -351,30 +408,8 @@ Connection con = connectDb();
         img_user.setImage(image);
         img_user.setPreserveRatio(true);
         
-       // cbx_panier.setItems(FXCollections.observableArrayList(
-          //      ""));
-           try {
-              ResultSet rs= con.createStatement().executeQuery("select id_panier from echange");
-              ObservableList list_p = FXCollections.observableArrayList();
-              while(rs.next()){
-list_p.add(Integer.valueOf(rs.getString("id_panier"))); 
-              } 
-              cbx_panier.setItems(list_p);
-          } catch(NumberFormatException | SQLException exception){
-            }
-        cbx_etat.setItems(FXCollections.observableArrayList(
-                "par defaut", "Archivé", "Non Archivé"));
-        try {
-              ResultSet rs= con.createStatement().executeQuery("select id from transporteur");
-              ObservableList list_t = FXCollections.observableArrayList();
-              while(rs.next()){
-list_t.add(Integer.valueOf(rs.getString("id"))); 
-              } 
-              cbx_transp.setItems(list_t);
-          } catch(NumberFormatException | SQLException exception){
-            }
-        
-    
     }
 
 }
+
+

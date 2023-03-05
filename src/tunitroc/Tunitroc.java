@@ -5,6 +5,18 @@
  */
 package tunitroc;
 
+import entities.Evenement;
+import entities.User;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import services.CRUDEvenement;
+import services.CRUDUser;
+import utils.DBConnection;
 import java.sql.SQLException;
 
 /**
@@ -17,6 +29,22 @@ public class Tunitroc {
      * @param args the command line arguments
      * @throws java.sql.SQLException
      */
+       DBConnection TuniTrocDB = DBConnection.getInstance();
+        Connection con = null;
+        public static Connection connectDb() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tunitroc", "root", "");
+            return con;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+    }
+          
+                }
+    
+   
     public static void main(String[] args) throws SQLException {
 //        DBConnection TuniTrocDB = DBConnection.getInstance();
 //

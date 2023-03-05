@@ -213,10 +213,40 @@ public class TableUserController implements Initializable {
         }
     }
     
-    @FXML
+     @FXML
     void click_transporteurs(MouseEvent event) throws SQLException {
+TableTransporteurController tableTranspController = new TableTransporteurController();
+        tableTranspController.setI(i);
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableTransporteur.fxml"));
+
+            // set the controller instance
+            loader.setController(tableTranspController);
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setOnCloseRequest(e -> {
+                
+                try {
+                    CRUDUser cr7=new CRUDUser();
+                    cr7.logout(currentUser.getEmail()); // Appelle la fonction supp()
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+    
 
     @FXML
     void click_events(MouseEvent event) {
