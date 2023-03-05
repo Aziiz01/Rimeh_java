@@ -7,7 +7,6 @@ package services;
 
 import com.twilio.Twilio;
 import entities.User;
-import java.net.PasswordAuthentication;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
