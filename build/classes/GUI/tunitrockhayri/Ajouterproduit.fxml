@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunitrockhayri.AjouterproduitController">
+   <children>
+      <AnchorPane layoutX="4.0" layoutY="7.0" prefHeight="708.0" prefWidth="300.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
+         <children>
+            <Button alignment="CENTER" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" style="-fx-background-color: #fcd745; -fx-background-radius: 50 0; -fx-border-color: #ffff;" text="Déconnecter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="30.0" prefWidth="263.0" text="KHAIREDDINE" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button alignment="TOP_LEFT" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="USERS" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="244.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="BULLHORN" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnajtaccP2" alignment="TOP_LEFT" layoutY="288.0" mnemonicParsing="false" onAction="#redbtnajtaccP2" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Produits" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="CART_PLUS" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnajtaccPN2" alignment="TOP_LEFT" layoutY="332.0" mnemonicParsing="false" onAction="#redbtnajtaccPN2" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Paniers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="SHOPPING_CART" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Posts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="FILE_TEXT_ALT" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Commentaires" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="WECHAT" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="464.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Echanges" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="RETWEET" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="508.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Transporteurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="TRUCK" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Reclamations" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="RECYCLE" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="596.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Fidelites" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="GIFT" />
+               </graphic>
+            </Button>
+            <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="105.0" layoutY="104.0" size="7em" wrappingWidth="90.0" />
+         </children>
+      </AnchorPane>
+      <Pane layoutX="318.0" layoutY="14.0" prefHeight="158.0" prefWidth="936.0" style="-fx-background-color: #233244 #233244; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="29.0" layoutY="34.0" prefHeight="90.0" prefWidth="438.0" text="Ajouter Produit" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="313.0" layoutY="197.0" prefHeight="511.0" prefWidth="964.0">
+         <children>
+            <Button fx:id="ajtproduit_btn" layoutX="15.0" layoutY="447.0" mnemonicParsing="false" onAction="#ajouterproduit" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <TextField fx:id="addproduitlibelle" layoutX="96.0" layoutY="193.0" prefHeight="78.0" prefWidth="230.0" />
+            <TextField fx:id="addproduitville" layoutX="96.0" layoutY="150.0" prefHeight="31.0" prefWidth="230.0" />
+            <TextField fx:id="addproduitnom" layoutX="90.0" layoutY="23.0" prefHeight="31.0" prefWidth="236.0" />
+            <TextField fx:id="addproduitcate" layoutX="97.0" layoutY="109.0" prefHeight="31.0" prefWidth="230.0" />
+            <TextField fx:id="addproduittype" layoutX="90.0" layoutY="63.0" prefHeight="31.0" prefWidth="236.0" />
+            <Label layoutX="28.0" layoutY="24.0" text="Nom">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="64.0" text="Type">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="-1.0" layoutY="110.0" text="Categorie">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="151.0" text="Ville">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="193.0" text="Libelle">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="availableBooks_importBtn" layoutX="11.0" layoutY="364.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #233244 #233244;" text="Photo" textFill="WHITE" />
+            <ImageView fx:id="availableBooks_imageView" fitHeight="166.0" fitWidth="158.0" layoutX="168.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" />
+            <TableView fx:id="addproduittable" layoutX="350.0" layoutY="-6.0" prefHeight="429.0" prefWidth="591.0" style="-fx-background-color: #f7 #233244cb4f; -fx-background-radius: 20;" visible="false">
+               <columns>
+                  <TableColumn fx:id="viewtype" prefWidth="90.0" text="Type" />
+                  <TableColumn fx:id="viewcateg" minWidth="0.0" prefWidth="92.0" text="Categorie" />
+                  <TableColumn fx:id="viewnom" prefWidth="63.0" text="Nom" />
+                  <TableColumn fx:id="viewlib" minWidth="0.0" prefWidth="85.0" text="Libelle" />
+                  <TableColumn fx:id="viewville" prefWidth="75.0" text="Ville" />
+                  <TableColumn fx:id="viewlib1" minWidth="0.0" prefWidth="106.0" text="Libelle" />
+                  <TableColumn fx:id="viewiduser" minWidth="0.0" prefWidth="92.0" text="User" />
+               </columns>
+            </TableView>
+            <AreaChart fx:id="dashboard_incomeChart" layoutX="389.0" layoutY="22.0" prefHeight="419.0" prefWidth="535.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
+            <ComboBox fx:id="addproduituser" layoutX="97.0" layoutY="281.0" prefWidth="150.0" />
+            <Label layoutX="30.0" layoutY="282.0" text="User">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

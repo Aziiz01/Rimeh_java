@@ -28,7 +28,6 @@ import utils.DBConnection;
  */
 public class PanierCrud {
     Connection TuniTrocDB = DBConnection.getConnection();
-     Connection TuniTrocDB = DBConnection.getConnection();
  
     public Connection getConnection(){
         Connection conn;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tunitrockhayri;
+package GUI.tunitrockhayri;
 
-import crud.ProduitCrud;
+import services.ProduitCrud;
 import entities.Produit;
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +31,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import utilis.Connexion;
+import utils.DBConnection;
 
 /**
  * FXML Controller class

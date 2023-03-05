@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tunitrockhayri;
+package GUI.tunitrockhayri;
 
-import crud.PanierCrud;
-import crud.ProduitCrud;
+import services.PanierCrud;
+import services.ProduitCrud;
 import entities.Panier;
 import entities.Produit;
 import java.io.IOException;
@@ -35,7 +35,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import utilis.Connexion;
+import utils.DBConnection;
 
 /**
  * FXML Controller class

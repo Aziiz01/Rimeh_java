@@ -8,16 +8,19 @@
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/StatController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Evenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDEchange.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutTransporteurController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableUserController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/ModifUserController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/InscriptionController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/LoginUIController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/PanierCrud.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/ProduitinterfaceController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDUser.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/User.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDPost.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Post.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDReclamation.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/ModifierpanierController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDUser.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutUserController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/AjoutEventController.java</file>
@@ -25,14 +28,21 @@
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableTransporteurController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/tunitroc/FxMain.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDEchange.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/ModifierproduitController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/entities/Echange.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/utils/DBConnection.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDEvenement.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/InterfaceCRUDCommentaire.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/ProduitCrud.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/AjouterproduitController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDPost.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/Acceuil1Controller.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/services/CRUDCommentaire.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/Gestionproduit1Controller.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/Tunitrockhayri.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/ModifEchangeController.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/database.java</file>
+            <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/GUI/tunitrockhayri/getData.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/ModifEventController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableEventController.java</file>
             <file>file:/C:/Users/Administrateur/Documents/NetBeansProjects/master_pi/src/controller/TableEchangeController.java</file>
