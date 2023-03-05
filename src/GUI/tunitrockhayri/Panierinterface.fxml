@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="742.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunitrockhayri.PanierinterfaceController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="26.0" prefHeight="686.0" prefWidth="239.0" />
+      <Button fx:id="boutique_btn" layoutX="12.0" layoutY="209.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="232.0" text="     Boutique" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="produi_btn" layoutX="12.0" layoutY="248.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="232.0" text="   Produit">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="panier_btn" layoutX="12.0" layoutY="287.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="232.0" text=" Panier">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TableView layoutX="261.0" layoutY="102.0" prefHeight="556.0" prefWidth="591.0">
+         <columns>
+            <TableColumn prefWidth="111.0" text="Title" />
+            <TableColumn prefWidth="171.0" text="Type" />
+            <TableColumn prefWidth="170.0" text="Categorie" />
+            <TableColumn prefWidth="172.0" text="Ville" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="862.0" layoutY="70.0" prefHeight="598.0" prefWidth="255.0">
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <children>
+            <ComboBox layoutX="91.0" layoutY="66.0" prefWidth="150.0" promptText="choisir" />
+            <Label layoutX="19.0" layoutY="67.0" text="Title">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ComboBox layoutX="91.0" layoutY="118.0" prefWidth="150.0" promptText="choisir" />
+            <Label layoutX="17.0" layoutY="119.0" text="Type">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ComboBox layoutX="112.0" layoutY="165.0" prefHeight="31.0" prefWidth="129.0" promptText="choisir" />
+            <Label layoutX="18.0" layoutY="166.0" text="Categorie">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="74.0" layoutY="284.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Valider" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="quitterp" layoutX="434.0" layoutY="668.0" mnemonicParsing="false" onAction="#redirectionAcceuil" prefHeight="39.0" prefWidth="232.0" text="Quitter">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

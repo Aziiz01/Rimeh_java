@@ -10,7 +10,6 @@ package controller;
  * @author ZeroS TF
  */
 import entities.User;
-import java.awt.Color;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

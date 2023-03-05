@@ -6,7 +6,6 @@
 package services;
 
 import entities.Echange;
-import entities.Evenement;
 import java.sql.SQLException;
 import java.util.List;
 

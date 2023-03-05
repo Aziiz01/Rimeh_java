@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tunitrockhayri.Acceuil1Controller">
+   <children>
+      <AnchorPane layoutX="308.0" layoutY="6.0" prefHeight="708.0" prefWidth="967.0" style="-fx-background-color: #233244; -fx-background-radius: 20;" />
+      <AnchorPane layoutX="4.0" layoutY="7.0" prefHeight="708.0" prefWidth="300.0" style="-fx-background-color: #fcd745; -fx-background-radius: 20;">
+         <children>
+            <Button alignment="CENTER" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" style="-fx-background-color: #fcd745; -fx-background-radius: 50 0; -fx-border-color: #ffff;" text="Déconnecter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="30.0" prefWidth="263.0" text="KHAIREDDINE" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button alignment="TOP_LEFT" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="USERS" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="244.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="BULLHORN" />
+               </graphic>
+            </Button>
+            <Button fx:id="Prod1" alignment="TOP_LEFT" layoutY="288.0" mnemonicParsing="false" onAction="#Redprod1" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Produits" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="CART_PLUS" />
+               </graphic>
+            </Button>
+            <Button fx:id="Pan1" alignment="TOP_LEFT" layoutY="332.0" mnemonicParsing="false" onAction="#Redpan1" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Paniers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="SHOPPING_CART" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Posts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="FILE_TEXT_ALT" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Commentaires" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="WECHAT" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="464.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Echanges" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="RETWEET" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="508.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Transporteurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="TRUCK" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Reclamations" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="RECYCLE" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutY="596.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #fcd745;" text="Fidelites" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="GIFT" />
+               </graphic>
+            </Button>
+            <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="105.0" layoutY="104.0" size="7em" wrappingWidth="90.0" />
+         </children>
+      </AnchorPane>
+      <VBox layoutX="319.0" layoutY="177.0" prefHeight="522.0" prefWidth="936.0">
+         <children>
+            <FontAwesomeIcon fill="#fcd745" iconName="SHOPPING_CART" size="500" textAlignment="CENTER" wrappingWidth="935.2857055664062" />
+         </children>
+      </VBox>
+      <Pane layoutX="318.0" layoutY="14.0" prefHeight="158.0" prefWidth="936.0" style="-fx-background-color: #fcd74 #2332445;">
+         <children>
+            <Label layoutX="373.0" layoutY="22.0" text="TuniTroc" textFill="#fcd745">
+               <font>
+                  <Font name="Microsoft JhengHei UI Bold" size="83.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon fill="#fcd745" iconName="DESKTOP" layoutX="232.0" layoutY="117.0" size="7em" text="" />
+            <Line endX="570.0" layoutX="232.0" layoutY="165.0" startX="-100.0" stroke="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
