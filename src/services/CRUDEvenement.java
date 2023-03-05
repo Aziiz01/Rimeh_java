@@ -6,7 +6,6 @@
 package services;
 
 import entities.Evenement;
-import entities.User;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
