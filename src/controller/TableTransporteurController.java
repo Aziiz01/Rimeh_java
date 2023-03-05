@@ -5,12 +5,10 @@
  */
 package controller;
 
-import com.itextpdf.text.BaseColor;
 import entities.Echange;
-import entities.Evenement;
+import entities.Transporteur;
 import entities.User;
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -20,11 +18,12 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +31,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,34 +40,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import services.CRUDEchange;
-import services.CRUDEvenement;
+import services.CRUDTransporteur;
 import services.CRUDUser;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Font.FontFamily;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfDocument;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
-import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import utils.DBConnection;
 
 /**
- * FXML Controller class
  *
- * @author ZeroS TF
+ * @author azizn
  */
-public class TableEchangeController implements Initializable {
+public class TableTransporteurController implements Initializable {
 
-    public int i;
+    
+
+     public int i;
     public CRUDUser cr7=new CRUDUser();
     public User currentUser;
 
@@ -79,7 +63,7 @@ public class TableEchangeController implements Initializable {
         this.i = i;
     }
     
-    private ObservableList<Echange> echangeList = FXCollections.observableArrayList();
+    private ObservableList<Transporteur> TranspList = FXCollections.observableArrayList();
 
     public User getCurrentUser() {
         return currentUser;
@@ -88,8 +72,8 @@ public class TableEchangeController implements Initializable {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
-    
-     @FXML
+
+    @FXML
     private Button btn_disconnect;
 
     @FXML
@@ -100,8 +84,6 @@ public class TableEchangeController implements Initializable {
 
     @FXML
     private Button btn_users;
-    @FXML
-    private Button btn_pdf;
 
     @FXML
     private Button btn_events;
@@ -111,30 +93,30 @@ public class TableEchangeController implements Initializable {
 
     @FXML
     private Button btn_transporteurs;
-    
-    @FXML
-    private Button btn_archive;
 
     @FXML
-    private TableView<Echange> table_echanges;
+    private TableView<Transporteur> table_transp;
 
     @FXML
-    private TableColumn<Echange, String> id_echange;
-    
-    @FXML
-    private TableColumn<Echange, String> panier_echange;
+    private TableColumn<Transporteur, String> id_transporteur;
 
     @FXML
-    private TableColumn<Echange, String> etat_echange;
+    private TableColumn<Transporteur, String> nom_transporteur;
 
     @FXML
-    private TableColumn<Echange, String> transp_echange;
+    private TableColumn<Transporteur, String> prenom_transporteur;
+
+    @FXML
+    private TableColumn<Transporteur, byte[]> photo_transporteur;
+
+    @FXML
+    private TableColumn<Transporteur, String> num_transporteur;
 
     @FXML
     private TextField searchBox;
 
     @FXML
-    private Button btn_ajout_echange;
+    private Button btn_ajouter;
 
     @FXML
     private Button btn_supprimer;
@@ -143,12 +125,12 @@ public class TableEchangeController implements Initializable {
     private Button btn_modifier;
 
     @FXML
-    void click_ajout(MouseEvent event) {
-        AjoutEchangeController ctrl = new AjoutEchangeController();
+    void click_ajout_transp(MouseEvent event) {
+ AjoutTransporteurController ctrl = new AjoutTransporteurController();
         ctrl.setI(i);
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/AjoutEchange.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/AjoutTransporteur.fxml"));
 
             // set the controller instance
             loader.setController(ctrl);
@@ -176,12 +158,9 @@ public class TableEchangeController implements Initializable {
         }
     }
 
-   
-    
-    
     @FXML
     void click_disconnect(MouseEvent event) throws SQLException {
-        CRUDUser sa = new CRUDUser();
+ CRUDUser sa = new CRUDUser();
         sa.logout(currentUser.getEmail());
         LoginUIController loginUIController = new LoginUIController();
         try {
@@ -214,8 +193,42 @@ public class TableEchangeController implements Initializable {
     }
 
     @FXML
+    void click_echanges(MouseEvent event) {
+ TableEchangeController tableEchangeController = new TableEchangeController();
+        tableEchangeController.setI(i);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableEchange.fxml"));
+
+            // set the controller instance
+            loader.setController(tableEchangeController);
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setOnCloseRequest(e -> {
+                
+                try {
+                    CRUDUser cr7=new CRUDUser();
+                    cr7.logout(currentUser.getEmail()); // Appelle la fonction supp()
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
     void click_events(MouseEvent event) {
-        TableEventController tableEventController = new TableEventController();
+TableEventController tableEventController = new TableEventController();
         tableEventController.setI(i);
 
         try {
@@ -248,28 +261,25 @@ public class TableEchangeController implements Initializable {
     }
 
     @FXML
-    void click_modif(MouseEvent event) {
-       // ModifEchangeController ctrl = new ModifEchangeController();
-       // ctrl.setI(i);
-
-        Echange selectedEchange = table_echanges.getSelectionModel().getSelectedItem();
-        if (selectedEchange == null) {
+    void click_modif_transp(MouseEvent event) {
+ Transporteur selectedTransp = table_transp.getSelectionModel().getSelectedItem();
+        if (selectedTransp == null) {
             // Aucun evenement sélectionné, afficher un message d'avertissement
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aucun échange sélectionné");
+            alert.setTitle("Aucun transporteur sélectionné");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez sélectionner un échange à modifier.");
+            alert.setContentText("Veuillez sélectionner un transporteur à modifier.");
             alert.showAndWait();
         } else {
-            ModifEchangeController modifechangecontroller = new ModifEchangeController();
-            modifechangecontroller.setI(i);
-            modifechangecontroller.setEchange_e(selectedEchange);
+            ModifTransporteurController modiftransporteurcontroller = new ModifTransporteurController();
+            modiftransporteurcontroller.setI(i);
+            modiftransporteurcontroller.setTransp_t(selectedTransp);
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ModifEchange.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ModifTransporteur.fxml"));
 
                 // set the controller instance
-                loader.setController(modifechangecontroller);
+                loader.setController(modiftransporteurcontroller);
 
                 Parent root = loader.load();
 
@@ -297,36 +307,70 @@ public class TableEchangeController implements Initializable {
     }
 
     @FXML
-    void click_supp(MouseEvent event) {
-        Echange selectedEchange = table_echanges.getSelectionModel().getSelectedItem();
-        if (selectedEchange == null) {
+    void click_supp_transp(MouseEvent event) {
+ Transporteur selectedTransporteur = table_transp.getSelectionModel().getSelectedItem();
+        if (selectedTransporteur == null) {
             // Aucun utilisateur sélectionné, afficher un message d'avertissement
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aucun échange sélectionné");
+            alert.setTitle("Aucun transporteur sélectionné");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez sélectionner un échange à supprimer.");
+            alert.setContentText("Veuillez sélectionner un transporteur à supprimer.");
             alert.showAndWait();
         } else {
             // Afficher une boîte de dialogue de confirmation avant de supprimer l'utilisateur
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation de suppression");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer l'échange sélectionné ?");
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer le transporteur sélectionné ?");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 try {
-                    CRUDEchange cr = new CRUDEchange();
-                    cr.supprimerEchange(selectedEchange.getId());
-                    table_echanges.getItems().remove(selectedEchange);
-                    Alert confirmation = new Alert(Alert.AlertType.INFORMATION, "L'échange a été supprimé avec succès.");
+                    CRUDTransporteur cr = new CRUDTransporteur();
+                    cr.supprimerTransporteur(selectedTransporteur.getId());
+                    table_transp.getItems().remove(selectedTransporteur);
+                    Alert confirmation = new Alert(Alert.AlertType.INFORMATION, "Le transporteur a été supprimé avec succès.");
                     confirmation.showAndWait();
                 } catch (SQLException e) {
-                    Alert error = new Alert(Alert.AlertType.ERROR, "Une erreur s'est produite lors de la suppression de l'échange.");
+                    Alert error = new Alert(Alert.AlertType.ERROR, "Une erreur s'est produite lors de la suppression de le transporteur.");
                     error.showAndWait();
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    @FXML
+    void click_transporteurs(MouseEvent event) {
+TableTransporteurController tableTranspController = new TableTransporteurController();
+        tableTranspController.setI(i);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/TableTransporteur.fxml"));
+
+            // set the controller instance
+            loader.setController(tableTranspController);
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setOnCloseRequest(e -> {
+                
+                try {
+                    CRUDUser cr7=new CRUDUser();
+                    cr7.logout(currentUser.getEmail()); // Appelle la fonction supp()
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -362,9 +406,10 @@ public class TableEchangeController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+
     }
 
-    @FXML
+   @FXML
     void mEnter(MouseEvent event) {
         Button btn = (Button) event.getSource();
             btn.setStyle("-fx-background-color: rgb(232, 171, 0); -fx-text-fill: white;");
@@ -376,151 +421,103 @@ public class TableEchangeController implements Initializable {
             btn.setStyle("-fx-background-color: rgb(252, 215, 69); -fx-text-fill: white;");
 
     }
-    @FXML
- void archive(MouseEvent event) throws IOException {
-    Parent archiveParent = FXMLLoader.load(getClass().getResource("/GUI/TableArchive.fxml"));
-    Scene archiveScene = new Scene(archiveParent);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(archiveScene);
-    window.show();
-}
 
 
- @FXML
-void PDF(MouseEvent event) {
-    Connection TuniTrocDB = DBConnection.getConnection();
-    try {
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("C:/Users/azizn/OneDrive/Documents/pdfs/pdfEchange.pdf"));
-        document.open();
 
-        // Add the title to the document
-        Paragraph title = new Paragraph("Liste des échanges", new Font(FontFamily.HELVETICA, 14, Font.BOLDITALIC, BaseColor.RED));
-        title.setAlignment(Element.ALIGN_CENTER);
-        document.add(title);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+          try {
+            CRUDUser cr7 = new CRUDUser();
+            currentUser = cr7.getUserById(i);
+        } catch (SQLException ex) {
+            Logger.getLogger(AjoutEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        label_nomUser.setText(currentUser.getPrenom() + " " + currentUser.getNom());
+        InputStream inputStream = new ByteArrayInputStream(currentUser.getPhoto());
+        Image image = new Image(inputStream);
+        img_user.setImage(image);
+        img_user.setPreserveRatio(true);
 
-        // Add some spacing between the title and the table
-        document.add(new Paragraph(" "));
+        CRUDTransporteur sa = new CRUDTransporteur();
 
-        // Create a table with four columns
-        PdfPTable table = new PdfPTable(4);
-        table.setWidthPercentage(100);
-
-        // Add column headers to the table
-        PdfPCell cellId = new PdfPCell(new Phrase("ID", new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.RED)));
-        PdfPCell cellEtat = new PdfPCell(new Phrase("Etat", new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.RED)));
-        PdfPCell cellIdPanier = new PdfPCell(new Phrase("ID Panier", new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.RED)));
-        PdfPCell cellTransporteur = new PdfPCell(new Phrase("Transporteur", new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.RED)));
-
-        table.addCell(cellId);
-        table.addCell(cellEtat);
-        table.addCell(cellIdPanier);
-        table.addCell(cellTransporteur);
-
-        // Retrieve data from the database
-        Statement stmt = TuniTrocDB.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM echange");
-
-        // Loop through the data and add it to the table
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String etat = rs.getString("etat");
-            int id_panier = rs.getInt("id_panier");
-            int transporteur = rs.getInt("id_transporteur");
-
-            // Add data to the table
-            table.addCell(new PdfPCell(new Phrase(String.valueOf(id))));
-            table.addCell(new PdfPCell(new Phrase(etat)));
-            table.addCell(new PdfPCell(new Phrase(String.valueOf(id_panier))));
-            table.addCell(new PdfPCell(new Phrase(String.valueOf(transporteur))));
+        List<Transporteur> transporteurListFromDatabase = null;
+        try {
+            transporteurListFromDatabase = sa.afficherTransporteurs();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Add the table to the document
-        document.add(table);
+        ObservableList<Transporteur> TransporteurList = FXCollections.observableArrayList();
+        TransporteurList.addAll(transporteurListFromDatabase);
 
-        document.close();
+        id_transporteur.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nom_transporteur.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenom_transporteur.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+       photo_transporteur.setCellValueFactory(new PropertyValueFactory<>("photo"));
+      photo_transporteur.setCellFactory(column -> {
+    return new TableCell<Transporteur, byte[]>() {
+        private final ImageView imageView = new ImageView();
 
-        // Open the PDF file
-        File file = new File("C:/Users/azizn/OneDrive/Documents/pdfs/pdfEchange.pdf");
-        if (file.exists()) {
-            if (Desktop.isDesktopSupported()) {
-                try {
-                    Desktop.getDesktop().open(file);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        protected void updateItem(byte[] item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setGraphic(null);
             } else {
-                System.out.println("Desktop is not supported");
+                // Load the image and resize it
+                Image image = new Image(new ByteArrayInputStream(item));
+                imageView.setImage(image);
+                imageView.setFitWidth(50); // set the width of the ImageView
+                imageView.setFitHeight(50); // set the height of the ImageView
+                setGraphic(imageView);
             }
-        } else {
-            System.out.println("File does not exist");
         }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
+    };
+});
+
+       
+      
 
 
-  
-    
-    
-    
-    
-    
-   @Override
-public void initialize(URL location, ResourceBundle resources) {
-    try {
-        currentUser = cr7.getUserById(i);
-    } catch (SQLException ex) {
-        Logger.getLogger(AjoutEventController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        num_transporteur.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
+        
+        table_transp.setItems(TransporteurList);
 
-    label_nomUser.setText(currentUser.getPrenom() + " " + currentUser.getNom());
-    InputStream inputStream = new ByteArrayInputStream(currentUser.getPhoto());
-    Image image = new Image(inputStream);
-    img_user.setImage(image);
-    img_user.setPreserveRatio(true);
-
-    CRUDEchange sa = new CRUDEchange();
-
-    List<Echange> echangesListFromDatabase = null;
-    try {
-        echangesListFromDatabase = sa.afficherEchanges();
-    } catch (SQLException ex) {
-        Logger.getLogger(TableEchangeController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    ObservableList<Echange> echList = FXCollections.observableArrayList();
-    echList.addAll(echangesListFromDatabase);
-
-    id_echange.setCellValueFactory(new PropertyValueFactory<>("id"));
-    panier_echange.setCellValueFactory(new PropertyValueFactory<>("id_panier"));
-    etat_echange.setCellValueFactory(new PropertyValueFactory<>("etat"));
-    transp_echange.setCellValueFactory(new PropertyValueFactory<>("id_transporteur"));
-
-    table_echanges.setItems(echList);
-
-    // Add listener to the search box
+          // Add listener to the search box
     searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue.trim().isEmpty()) { // Show all echanges if search box is empty
-            echList.clear();
+            TransporteurList.clear();
             try {
-                echList.addAll(sa.afficherEchanges());
+                TransporteurList.addAll(sa.afficherTransporteurs());
             } catch (SQLException ex) {
-                Logger.getLogger(TableEchangeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TableTransporteurController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else { // Call recherche method to show filtered echanges
-            int id_e = Integer.parseInt(newValue);
-            List<Echange> filteredList = null;
+String nom_t = String.valueOf(newValue);
+            List<Transporteur> filteredList = null;
             try {
-                filteredList = sa.recherche(id_e);
+                filteredList = sa.recherchee(nom_t);
             } catch (SQLException ex) {
-                Logger.getLogger(TableEchangeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TableTransporteurController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            echList.clear();
-            echList.addAll(filteredList);
+            TransporteurList.clear();
+            TransporteurList.addAll(filteredList);
         }
     });
+
+    }
 }
 
-}

@@ -152,16 +152,10 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btn_ajout_echange" mnemonicParsing="false" onMouseClicked="#click_ajout" prefHeight="33.0" prefWidth="196.0" style="-fx-background-color: #fcd745; -fx-border-color: #ffff; -fx-background-radius: 20;" text="Ajouter " textFill="WHITE">
+                        <Button fx:id="btn_archive" mnemonicParsing="false" onMouseClicked="#archive" prefHeight="33.0" prefWidth="209.0" style="-fx-background-color: #fcd745; -fx-border-color: #ffff;" text="Archive" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
                         </Button>
                         <Button fx:id="btn_supprimer" mnemonicParsing="false" onMouseClicked="#click_supp" prefHeight="33.0" prefWidth="209.0" style="-fx-background-color: #fcd745; -fx-border-color: #ffff;" text="Supprimer" textFill="WHITE">
                            <font>
@@ -172,6 +166,14 @@
                            </graphic>
                         </Button>
                         <Button fx:id="btn_modifier" mnemonicParsing="false" onMouseClicked="#click_modif" prefHeight="33.0" prefWidth="196.0" style="-fx-background-color: #fcd745; -fx-border-color: #FFFF;" text="Modifier " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="20" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_pdf" mnemonicParsing="false" onMouseClicked="#PDF" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #fcd745; -fx-border-color: #FFFF;" text="PDF" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
