@@ -6,7 +6,7 @@
 package GUI.tunitrockhayri;
 
 import services.PanierCrud;
-import crud.ProduitCrud;
+import services.ProduitCrud;
 import entities.Panier;
 import entities.Produit;
 import java.io.IOException;

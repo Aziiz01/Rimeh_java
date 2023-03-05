@@ -6,18 +6,14 @@
 package controller;
 
 import entities.Echange;
-import tunitroc.Tunitroc;
-import entities.Evenement;
 import entities.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -40,10 +36,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.CRUDEchange;
-import services.CRUDEvenement;
 import services.CRUDUser;
 import static tunitroc.Tunitroc.connectDb;
-import utils.DBConnection;
 
 /**
  * FXML Controller class
