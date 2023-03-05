@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud;
+package services;
 
 import entities.Produit;
 import java.sql.Connection;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import utilis.Connexion;
+import utils.DBConnection;
 
 /**
  *
@@ -25,6 +25,8 @@ import utilis.Connexion;
  */
 
 public class ProduitCrud {
+    
+    Connection TuniTrocDB = DBConnection.getConnection();
      public Connection getConnection(){
         Connection conn;
         try{
@@ -39,7 +41,7 @@ public class ProduitCrud {
   public void ajouterproduit(Produit p, int id_user) {
     try {
         String requete = "INSERT INTO produit (type, categorie, nom, libelle, photo, ville, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement pst = Connexion.getInstance().getCnx().prepareStatement(requete);
+        PreparedStatement pst = TuniTrocDB.prepareStatement(requete);
         pst.setString(1, p.getType());
         pst.setString(2, p.getCategorie());
         pst.setString(3, p.getNom());
@@ -59,7 +61,7 @@ public class ProduitCrud {
 
     try {
         String requete = "SELECT * FROM produit";
-        Statement st = Connexion.getInstance().getCnx().createStatement();
+        Statement st = TuniTrocDB.createStatement();
         ResultSet rs = st.executeQuery(requete);
         while (rs.next()) {
             Produit p = new Produit();
@@ -86,7 +88,7 @@ public class ProduitCrud {
         
         String query = "DELETE FROM produit WHERE produit.id="+ t.getId()+" ";
         try{
-            Statement st =Connexion.getInstance().getCnx().createStatement();
+            Statement st =TuniTrocDB.createStatement();
             st.executeUpdate(query);
             System.out.println("Produit supprimé ");
         }
@@ -100,7 +102,7 @@ public class ProduitCrud {
             try{
         
         String requte ="update produit set type=?,categorie=?,nom=?,libelle=?,photo=?,ville=? where id="+ t.getId()+"";
-        PreparedStatement pst= Connexion.getInstance().getCnx().prepareStatement(requte);
+        PreparedStatement pst= TuniTrocDB.prepareStatement(requte);
         pst.setString(1, t.getType());
         pst.setString(2, t.getCategorie());
         pst.setString(3, t.getNom());

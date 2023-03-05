@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud;
+package services;
 
 import entities.Panier;
 import entities.Produit;
@@ -20,13 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import utilis.Connexion;
+import utils.DBConnection;
 
 /**
  *
  * @author kheir
  */
 public class PanierCrud {
+    Connection TuniTrocDB = DBConnection.getConnection();
  
     public Connection getConnection(){
         Connection conn;
@@ -42,7 +43,7 @@ public class PanierCrud {
     try {
         //Connection conn = Connexion.getInstance().getCnx();
         String requete ="INSERT INTO panier (date, produit_s, produit_r, transporteurB) VALUES (?, ?, ?, ?)";
-        PreparedStatement pst = Connexion.getInstance().getCnx().prepareStatement(requete);
+        PreparedStatement pst = TuniTrocDB.prepareStatement(requete);
         pst.setDate(1, Date.valueOf(date));
         pst.setInt(2, produit_s);
         pst.setInt(3, produit_r);
@@ -61,7 +62,7 @@ public class PanierCrud {
 
     try {
         String requete = "SELECT * FROM panier";
-        Statement st = Connexion.getInstance().getCnx().createStatement();
+        Statement st = TuniTrocDB.createStatement();
         ResultSet rs = st.executeQuery(requete);
         while (rs.next()) {
            Panier p = new Panier();
