@@ -11,7 +11,7 @@
 .button1:pressed
 {
 -fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
+-fx-background-radius :  30 0 0 31;
 }
 
 .button2
